@@ -4,8 +4,7 @@ import com.example.spring5app.repositories.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 @Controller
 public class BookController {
@@ -16,11 +15,11 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public @ResponseBody String getBooks(Model model) {
+    @RequestMapping("/books")
+    public String getBooks(Model model) {
 
         model.addAttribute("books", bookRepository.findAll());
 
-        return "books";
+        return "books/list";
     }
 }
